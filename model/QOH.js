@@ -9,9 +9,8 @@ const Deck = new Schema({
     play: String,
     strength: Number,
     cost: Number
-},{collection: 'maleficent'});
+});
 
-const database = mongoose.model("maleficent", Deck);
-console.log("inside database");
+const database = mongoose.model("queen of hearts", Deck);
 
 module.exports = database;

@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import Card from "../Card";
+import "./index.css";
 
 class CardList extends React.Component{
     constructor(props){
@@ -13,13 +14,19 @@ class CardList extends React.Component{
             discardPile: [],
             handSize: 0
         };
+
+        this.temp=this.temp.bind(this);
     }
 
-    componentDidMount(){
+    temp(event){
+        this.make(event.target.value);
+    }
+
+    make(character){
         let deck=this.state.deck;
         let fateDeck= this.state.fateDeck;
 
-        Axios.get("/api/QOH")
+        Axios.get(`/api/${character}`)
         .then((processed) =>{
             let data=processed.data.sort(function(a, b){return 0.5 - Math.random()});;
             data.map((v) => {
@@ -49,9 +56,15 @@ class CardList extends React.Component{
 
     render(){
         return(
-            <div>
-                {this.state.hand.map((v, index) =>
-                    <Card key={index} name={v.name} description={v.description} type1={v.type1} type2={v.type2} play={v.play} />)}
+            <div className="cardList">
+                {this.state.hand.length !== 0 ?
+                this.state.hand.map((v, index) =>
+                    <Card key={index} name={v.name} description={v.description} type1={v.type1} type2={v.type2} play={v.play} />)
+                : <>
+                    <button value="QOH" onClick={this.temp}>Queen of Hearts</button>
+                    <button value="maleficent" onClick={this.temp}>Maleficent</button>
+                </>
+                }
             </div>  
         );
     }

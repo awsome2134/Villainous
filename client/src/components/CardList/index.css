@@ -1,8 +1,7 @@
 .cardList{
     position: absolute;
-    bottom: 8%;
+    bottom: 10px;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: 120%;
     grid-column-gap: 1%;
 }

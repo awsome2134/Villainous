@@ -4,9 +4,8 @@ import image from "./cardborder.png";
 
 class Card extends React.Component{
     render (){
-
         return(
-            <div className="card">
+            <div className="card" onClick={() => this.props.discard(this.props.id)}>
                 <h3>{this.props.name}</h3>
                 <img src={image} alt="temp" />
                 <p>{this.props.description}</p>

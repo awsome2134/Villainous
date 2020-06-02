@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 8080;
 
+//set up database connections
 const mongoose = require("mongoose");
 mongodb_URI = "mongodb+srv://my922299:Awsome2134@pokemonlist-cjrhm.mongodb.net/Decks";
 mongoose.connect(process.env.MONGODB_URI || mongodb_URI, {
